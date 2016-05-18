@@ -1,5 +1,25 @@
 console.log('Start');
 
+function onConnectionLost(responseObject) {
+	if (responseObject.errorCode !== 0) {
+		console.log("onConnectionLost:"+responseObject.errorMessage);
+	}
+};
+
+function onMessageArrived(message) {
+	console.log("onMessageArrived:"+message.payloadString);
+};
+
+function onConnect() {
+	console.log("onConnect");
+	client.subscribe("iot");
+}
+
+var client = new Paho.MQTT.Client("153.127.197.166", 9090 , "clientId" + new Date().getTime());
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
+client.connect({onSuccess:onConnect});
+
 window.onload = function() {
 	console.log('window.onload');
 
@@ -13,10 +33,22 @@ window.onload = function() {
 		};
 
 		function success(pos) {
-			var crd = pos.coords;
+			console.log('success');
 
-			alert(crd.latitude + ' : ' + crd.longitude + ' : ' + crd.accuracy);
-			console.log('[' + pos.timestamp + '] ' + crd.latitude + ' : ' + crd.longitude + ' : ' + crd.accuracy);
+			var devicePosition = {
+					id: null,
+					timestamp:	pos.timestamp,
+					latitude:	pos.coords.latitude,
+					longitude:	pos.coords.longitude,
+					altitude:	pos.coords.altitude,
+					accuracy:	pos.coords.accuracy,
+					altitudeAccuracy: pos.coords.altitudeAccuracy,
+					heading:	pos.coords.heading,
+					speed:		pos.coords.speed
+					}
+			message = new Paho.MQTT.Message(JSON.stringify(devicePosition));
+			message.destinationName = "iot";
+			client.send(message);
 		};
 
 		function error(err) {
