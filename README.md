@@ -50,3 +50,13 @@ Nginx (HTTP Server)
 -------------------
 
     $ sudo apt-get install nginx
+
+サンプルコード
+==============
+
+    $ git clone https://github.com/nuubou/iotlt-hiroshima-1.git
+    $ sudo ln -s $PWD/iotlt-hiroshima-1/iot-device/ /usr/share/nginx/html
+
+参考:
+* [Geolocation.getCurrentPosition() - Web API インターフェイス | MDN](https://developer.mozilla.org/ja/docs/Web/API/Geolocation/getCurrentPosition) 
+* [Paho - Open Source messaging for M2M - Eclipse](https://eclipse.org/paho/clients/js/)
