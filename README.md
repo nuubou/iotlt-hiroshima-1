@@ -29,14 +29,15 @@ node-red
 MOSQUITTO (MQTT Broker)
 -----------------------
 
+- インストール  
 参考：[Downloads | Mosquitto](http://mosquitto.org/download/)
 
-    $ sudo apt-get install software-properties-common
-    $ sudo add-apt-repository ppa:mosquitto-dev/mosquitto-ppa
-    $ sudo apt-get update
-    $ sudo apt-get install mosquitto
+    $ sudo apt-get install software-properties-common  
+    $ sudo add-apt-repository ppa:mosquitto-dev/mosquitto-ppa  
+    $ sudo apt-get update  
+    $ sudo apt-get install mosquitto  
 
-MQTT over websocket  
+- MQTT over websocket  
 参考：http://tomowatanabe.hatenablog.com/entry/2016/01/21/095007
 
     $ cat >> /etc/mosquitto/mosquitto.conf
