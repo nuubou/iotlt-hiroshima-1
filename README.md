@@ -40,12 +40,12 @@ MOSQUITTO (MQTT Broker)
 - MQTT over websocket  
 参考：http://tomowatanabe.hatenablog.com/entry/2016/01/21/095007
 
-    $ cat >> /etc/mosquitto/mosquitto.conf
-    listener 1883
+    $ cat >> /etc/mosquitto/mosquitto.conf  
+    listener 1883  
     
-    listener 9090 127.0.0.1
-    protocol websockets
-    $ sudo service mosquitto restart
+    listener 9090 127.0.0.1  
+    protocol websockets  
+    $ sudo service mosquitto restart  
 
 Nginx (HTTP Server)
 -------------------
