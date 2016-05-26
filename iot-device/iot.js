@@ -15,7 +15,7 @@ function onConnect() {
 	client.subscribe("iot");
 }
 
-var client = new Paho.MQTT.Client("153.127.197.166", 9090 , "clientId" + new Date().getTime());
+var client = new Paho.MQTT.Client("xxx.xxx.xxx.xxx", 9090 , "clientId" + new Date().getTime());
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
 client.connect({onSuccess:onConnect});
